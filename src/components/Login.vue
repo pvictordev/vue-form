@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form action="#" id="personalInfoForm">
+    <form action="#" id="personalInfoForm" @submit.prevent="submitForm">
       <fieldset>
         <legend>Атрибуты формы</legend>
         <div>
@@ -121,7 +121,29 @@
 
 <script>
 export default {
-  name: 'Login'
+  name: 'Login',
+  methods: {
+    submitForm() {
+      // Получаем все обязательные поля
+      const requiredFields = document.querySelectorAll('[required]')
+
+      // Проверяем, все ли обязательные поля заполнены
+      let allFieldsFilled = true
+      requiredFields.forEach((field) => {
+        if (!field.value.trim()) {
+          allFieldsFilled = false
+        }
+      })
+
+      // Если все поля заполнены, выводим сообщение
+      if (allFieldsFilled) {
+        alert('Клиент успешно создан')
+      } else {
+        // Если есть незаполненные поля, вы можете выполнить другие действия или вывести сообщение об ошибке
+        alert('Пожалуйста, заполните все обязательные поля')
+      }
+    }
+  }
 }
 </script>
 
