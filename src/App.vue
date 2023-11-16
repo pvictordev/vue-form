@@ -1,11 +1,22 @@
 <template>
-  <div>
-    <RouterView />
+  <div id="app">
+    <h1 align="center">Валидация формы</h1>
+    <Login />
   </div>
 </template>
 
-<script setup>
-import { RouterView } from 'vue-router'
+<script>
+import Login from './components/Login.vue'
+export default {
+  name: 'App',
+  components: {
+    Login
+  }
+}
 </script>
 
-<style lang="scss" scoped></style>
+<style>
+h1 {
+  margin: 50px 0;
+}
+</style>
